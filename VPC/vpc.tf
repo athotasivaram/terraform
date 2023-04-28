@@ -24,3 +24,12 @@ resource "aws_subnet" "private" {
     Name = "private-subnet-automated-vpc"
   }
 }
+
+resource "aws_internet_gateway" "automated-igw" {
+  vpc_id = aws_vpc.main.id # internet gateway depends on VPC
+
+  tags = {
+    Name = "automated-somechange"
+  }
+}
+

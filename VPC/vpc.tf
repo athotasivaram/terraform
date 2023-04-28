@@ -62,3 +62,16 @@ resource "aws_nat_gateway" "example" {
   # on the Internet Gateway for the VPC.
   depends_on = [aws_internet_gateway.automated-igw]
 }
+
+resource "aws_route_table" "private-rt" { #for private route we don't attach IGW, we attach NAT
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.example.id
+  }
+
+  tags = {
+    Name = "private-rt"
+  }
+}

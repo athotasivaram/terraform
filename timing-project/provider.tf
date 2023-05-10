@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "timeing-remote-state"
-    key    = "session-06"
+    key    = "timing-project"
     region = "ap-south-1"
     dynamodb_table = "timeing-lock"
   }
